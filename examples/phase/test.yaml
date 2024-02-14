@@ -2,3 +2,18 @@
 
 trainer:
   precision: 16-mixed
+
+data:
+  class_path: lib.data.datamodules.netCDFDataModule
+  init_args:
+    train_paths: 
+      - data/onemil1_1.nc
+    validate_paths: 
+      - data/onemil1_2.nc
+    predict_paths:
+      - data/onemil2.nc
+      - data/p240.nc
+      - data/p390.nc
+    target_variables:
+      - reads_2A3
+      - reads_DMS

@@ -3,11 +3,26 @@
 trainer:
   precision: 16-mixed
   callbacks:
-    - class_path: lib.data.prediction_writer.netCDFDistributedPredictionWriter
+    - class_path: lib.data.writing.netCDFDistributedPredictionWriter
       init_args:
-        path: reads_prediction/data/predictions
+        path: data/predictions
         variable_name: reads
         dimension_names: 
           - batch
           - experiment_type
         write_interval: batch
+
+data:
+  class_path: lib.data.datamodules.netCDFDataModule
+  init_args:
+    train_paths: 
+      - data/onemil1_1.nc
+    validate_paths: 
+      - data/onemil1_2.nc
+    predict_paths:
+      - data/onemil2.nc
+      - data/p240.nc
+      - data/p390.nc
+    target_variables:
+      - reads_2A3
+      - reads_DMS

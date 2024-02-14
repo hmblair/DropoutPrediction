@@ -10,7 +10,6 @@ model:
         hidden_size: 64
         output_dim: 2
         num_layers: 8
-        variety: lstm
         dropout: 0.4
         num_embeddings: 8
         num_heads: 8
@@ -21,16 +20,11 @@ model:
           nonlinearity: exp
     objectives:
       loss:
-        class_path: lib.training.losses.LogMSELoss
+        class_path: lib.training.optimisation.losses.LogMSELoss
       absolute_error:
         class_path: torch.nn.L1Loss
       relative_error:
         class_path: torchmetrics.MeanAbsolutePercentageError
-
-optimizer:
-  class_path: torch.optim.AdamW
-  init_args:
-    lr: 0.001
 
 data:
   batch_size: 64

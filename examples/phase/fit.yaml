@@ -24,13 +24,18 @@ trainer:
         mode: min
         verbose: true
 
+optimizer:
+  class_path: torch.optim.AdamW
+  init_args:
+    lr: 0.001
+
 lr_scheduler: 
-  class_path: lib.training.lr_schedulers.LinearWarmupAndInverseSqrtDecayLR
+  class_path: lib.training.optimisation.lr_schedulers.LinearWarmupAndInverseSqrtDecayLR
   init_args: 
     warmup_epochs: 10
 
 data:
-  class_path: lib.data.datamodules.netcdf.netCDFDataModule
+  class_path: lib.data.datamodules.netCDFDataModule
   init_args:
     train_paths: 
       - data/onemil1_1.nc
