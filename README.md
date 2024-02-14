@@ -23,7 +23,7 @@ The training is handled by the PyTorch Lightning CLI, which is configured using
 YAML files. Example files for performing training and inference can be found
 under ./examples/phase, and files for specifying the hyperparameters of the
 pre-trained models can be found under ./examples/model. To run training, you
-should pass one of each file to \__main__.py, such as by calling 
+should pass one of each file to \_\_main__.py, such as by calling 
 ```
 python3 __main__.py fit \
     --config examples/phase/fit.yaml \
