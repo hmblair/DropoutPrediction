@@ -311,10 +311,10 @@ class RibonanzaNet(nn.Module):
         self.embedding_dim = ninp
         if not os.path.exists('models/checkpoints/ribonanzanet.pt'):
             raise FileNotFoundError(
-                'Pretrained weights not found. Please download the weights from ... and place it in the pretrained/checkpoints/ directory.'
+                'Pretrained weights not found. Please download the weights from ... and place it in the models/checkpoints/ directory.'
                 )
         state_dict = torch.load(
-            'pretrained/checkpoints/ribonanzanet.pt', 
+            'models/checkpoints/ribonanzanet.pt', 
             map_location=torch.device('cpu'),
             )
         self.load_state_dict(state_dict)
