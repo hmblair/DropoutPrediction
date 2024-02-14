@@ -21,16 +21,16 @@ if __name__ == "__main__":
 Example usage for fit, test, and predict:
 
 python3 __main__.py fit \
-    --config examples/fit.yaml \
-    --config examples/lstm.yaml
+    --config examples/phase/fit.yaml \
+    --config examples/model/lstm.yaml
     
 python3 __main__.py test \
-    --config examples/test.yaml \
-    --config examples/lstm.yaml \
+    --config examples/phase/test.yaml \
+    --config examples/model/lstm.yaml \
     --ckpt_dir checkpoints/lstm.ckpt
 
 python3 __main__.py predict \
-    --config examples/predict.yaml \
-    --config examples/lstm.yaml \
+    --config examples/phase/predict.yaml \
+    --config examples/model/lstm.yaml \
     --ckpt_dir checkpoints/lstm.ckpt
 """
