@@ -34,5 +34,5 @@ Running inference is similar, except you should pass the model checkpoint as wel
 python3 __main__.py predict \
     --config examples/phase/predict.yaml \
     --config examples/model/lstm.yaml \
-    --ckpt_dir checkpoints/lstm.ckpt
+    --ckpt_path checkpoints/lstm.ckpt
 ```

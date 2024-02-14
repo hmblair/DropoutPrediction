@@ -27,10 +27,10 @@ python3 __main__.py fit \
 python3 __main__.py test \
     --config examples/phase/test.yaml \
     --config examples/model/lstm.yaml \
-    --ckpt_dir checkpoints/lstm.ckpt
+    --ckpt_path checkpoints/lstm.ckpt
 
 python3 __main__.py predict \
     --config examples/phase/predict.yaml \
     --config examples/model/lstm.yaml \
-    --ckpt_dir checkpoints/lstm.ckpt
+    --ckpt_path checkpoints/lstm.ckpt
 """
