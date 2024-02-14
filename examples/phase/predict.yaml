@@ -1,0 +1,13 @@
+# predict.yaml
+
+trainer:
+  precision: 16-mixed
+  callbacks:
+    - class_path: lib.data.prediction_writer.netCDFDistributedPredictionWriter
+      init_args:
+        path: reads_prediction/data/predictions
+        variable_name: reads
+        dimension_names: 
+          - batch
+          - experiment_type
+        write_interval: batch

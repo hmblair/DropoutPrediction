@@ -1,0 +1,45 @@
+# fit.yaml
+
+trainer:
+  precision: 16-mixed
+  gradient_clip_val: 1.0
+  max_epochs: 100
+  logger:
+    class_path: pytorch_lightning.loggers.WandbLogger
+    init_args:
+      save_dir: ./logs/
+      log_model: all
+  callbacks:
+    - class_path: pytorch_lightning.callbacks.ModelCheckpoint
+      init_args:
+        filename: best_model
+        mode: min
+        save_top_k: 1
+        save_last: true
+        dirpath: ./checkpoints/
+    - class_path: pytorch_lightning.callbacks.EarlyStopping
+      init_args:
+        monitor: val_loss
+        patience: 10
+        mode: min
+        verbose: true
+
+lr_scheduler: 
+  class_path: lib.training.lr_schedulers.LinearWarmupAndInverseSqrtDecayLR
+  init_args: 
+    warmup_epochs: 10
+
+data:
+  class_path: lib.data.datamodules.netcdf.netCDFDataModule
+  init_args:
+    train_paths: 
+      - data/onemil1_1.nc
+    validate_paths: 
+      - data/onemil1_2.nc
+    predict_paths:
+      - data/onemil2.nc
+      - data/p240.nc
+      - data/p390.nc
+    target_variables:
+      - reads_2A3
+      - reads_DMS

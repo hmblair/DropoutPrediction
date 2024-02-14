@@ -1,0 +1,12 @@
+# .gitignore
+
+__pycache__
+.DS_Store
+.vscode
+checkpoints
+*.ckpt
+*.pt
+*logs
+*wandb
+*figures*
+data/

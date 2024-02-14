@@ -1,0 +1,4 @@
+# test.yaml
+
+trainer:
+  precision: 16-mixed
