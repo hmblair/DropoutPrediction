@@ -5,6 +5,7 @@ as outlined in the paper (...).
 To install, clone the repository and install the requirements via
 ```
 git clone https://github.com/hmblair/DropoutPrediction
+cd DropoutPrediction
 pip3 install -r requirements.txt
 ```
 
