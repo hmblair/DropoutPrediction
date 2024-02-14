@@ -3,5 +3,4 @@
 torchmetrics
 viennarna
 einops
-rna-fm
 -r lib/requirements.txt
