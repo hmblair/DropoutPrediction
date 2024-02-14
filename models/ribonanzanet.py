@@ -309,7 +309,7 @@ class RibonanzaNet(nn.Module):
             )
         self.pos_encoder=RelativePositionalEncoding(pairwise_dimension)
         self.embedding_dim = ninp
-        if not os.path.exists('pretrained/checkpoints/ribonanzanet.pt'):
+        if not os.path.exists('models/checkpoints/ribonanzanet.pt'):
             raise FileNotFoundError(
                 'Pretrained weights not found. Please download the weights from ... and place it in the pretrained/checkpoints/ directory.'
                 )
