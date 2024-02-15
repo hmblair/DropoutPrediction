@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from einops import rearrange
 from typing import Optional
 import os
+from pytorch_lightning.utilities import rank_zero_warn
 
 class ScaledDotProductAttention(nn.Module):
     '''Scaled Dot-Product Attention'''
@@ -281,6 +282,7 @@ class RibonanzaNet(nn.Module):
             nclass : int = 2,
             pairwise_dimension : int = 64,
             dropout : float = 0.05,
+            load_pretrained : bool = True,
             ):
         super().__init__()
         self.transformer_encoder = []
@@ -310,14 +312,17 @@ class RibonanzaNet(nn.Module):
         self.pos_encoder=RelativePositionalEncoding(pairwise_dimension)
         self.embedding_dim = ninp
         if not os.path.exists('models/checkpoints/ribonanzanet.pt'):
-            raise FileNotFoundError(
-                'Pretrained weights not found. Please download the weights from ... and place it in the models/checkpoints/ directory.'
+            rank_zero_warn(
+                'The original RibonanzaNet weights were not found at models/checkpoints/ribonanzanet.pt. '
+                'The model will be initialized with random weights.'
+                'If you are loading another pre-trained model, feel free to ignore this warning.'
                 )
-        state_dict = torch.load(
-            'models/checkpoints/ribonanzanet.pt', 
-            map_location=torch.device('cpu'),
-            )
-        self.load_state_dict(state_dict)
+        else:
+            state_dict = torch.load(
+                'models/checkpoints/ribonanzanet.pt', 
+                map_location=torch.device('cpu'),
+                )
+            self.load_state_dict(state_dict)
 
 
     def __getitem__(self, ix : int):
