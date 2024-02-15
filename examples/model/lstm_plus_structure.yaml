@@ -34,5 +34,3 @@ data:
   input_variables:
     - sequence_embeddings
     - structure_embeddings
-
-trainer:
