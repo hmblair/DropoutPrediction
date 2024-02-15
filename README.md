@@ -1,6 +1,6 @@
 A repository for replicating the results and performing inference on the Ribonanza
 model fine-tuned for sequence dropout prediction during chemical mapping experiments,
-as outlined in the paper (...). 
+as outlined in the paper _Ribonanza: deep learning of RNA structure through dual crowdsourcing_. 
 
 To install, clone the repository and install the requirements via
 ```
