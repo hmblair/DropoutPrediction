@@ -28,8 +28,22 @@ trainer:
         unfreeze_rate: 5
 
 data:
-  batch_size: 64
+  class_path: lib.data.datamodules.netCDFDataModule
+  init_args:
+    batch_size: 32
+    train_paths: 
+      - data/onemil1_1.nc
+    validate_paths: 
+      - data/onemil1_2.nc
+    predict_paths:
+      - data/onemil2.nc
+      - data/p240.nc
+      - data/p390.nc
   input_variables:
     - sequence_embeddings
+    target_variables:
+      - reads_2A3
+      - reads_DMS
+
 
 
