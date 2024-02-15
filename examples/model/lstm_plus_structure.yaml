@@ -1,17 +1,18 @@
 # lstm.yaml
 
 model:
-  class_path: lib.training.modules.base.PipelineModule
+  class_path: lib.training.modules.PipelineModule
   init_args:
     model:
-      class_path: lib.models.recurrent.RecurrentNetworkWithAttention
+      class_path: lib.models.recurrent.RecurrentEncoderDecoderWithAttention
       init_args:
         embedding_dim: 64
         hidden_size: 64
-        output_dim: 2
-        num_layers: 8
+        out_size: 2
+        num_encoder_layers: 8
+        num_decoder_layers: 8
         dropout: 0.4
-        num_embeddings: 8
+        num_embeddings: 15
         num_heads: 8
         attention_dropout: 0.0
         num_concat_dims: 2
@@ -26,9 +27,12 @@ model:
         class_path: torch.nn.L1Loss
       relative_error:
         class_path: torchmetrics.MeanAbsolutePercentageError
+    name: lstm_plus_structure
 
 data:
   batch_size: 64
   input_variables:
     - sequence_embeddings
     - structure_embeddings
+
+trainer:

@@ -1,7 +1,7 @@
 # rna-fm.yaml
 
 model:
-  class_path: lib.training.modules.finetuning.FinetuningModuleDenseHead
+  class_path: lib.training.modules.FinetuningModuleDenseHead
   init_args:
     model:
       class_path: models.rna_foundation_model.RNAFoundationModel
@@ -17,6 +17,7 @@ model:
         class_path: torch.nn.L1Loss
       relative_error:
         class_path: torchmetrics.MeanAbsolutePercentageError
+    name: rna-fm
 
 trainer:
   max_epochs: 100

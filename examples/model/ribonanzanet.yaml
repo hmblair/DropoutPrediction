@@ -17,6 +17,7 @@ model:
         class_path: torch.nn.L1Loss
       relative_error:
         class_path: torchmetrics.MeanAbsolutePercentageError
+    name: ribonanzanet
 
 trainer:
   max_epochs: 100
