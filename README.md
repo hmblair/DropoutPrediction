@@ -18,6 +18,8 @@ pip3 install -q --user ptflops
 In order to replicate the results from the paper, you will need the train data 
 and pre-trained models. These can be found at https://drive.google.com/drive/folders/14bBVz0CLkzt4AG9w5YPr_pWVsWT53HDl?usp=share_link;
 the data should be placed in ./data, and the pre-trained models in ./pretrained/checkpoints.
+The utils.py file contains functions for loading the predictions made by the
+models, as well as computing the metrics provided in the supplemental table. 
 
 The training is handled by the PyTorch Lightning CLI, which is configured using
 YAML files. Example files for performing training and inference can be found
