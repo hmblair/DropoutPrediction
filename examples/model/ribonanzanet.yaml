@@ -39,8 +39,8 @@ data:
       - data/onemil2.nc
       - data/p240.nc
       - data/p390.nc
-  input_variables:
-    - sequence_embeddings
+    input_variables:
+      - sequence_embeddings
     target_variables:
       - reads_2A3
       - reads_DMS
