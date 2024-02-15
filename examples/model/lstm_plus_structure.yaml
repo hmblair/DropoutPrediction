@@ -1,4 +1,4 @@
-# lstm.yaml
+# lstm_plus_structre.yaml
 
 model:
   class_path: lib.training.modules.PipelineModule
