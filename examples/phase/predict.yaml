@@ -10,4 +10,4 @@ trainer:
         dimension_names: 
           - batch
           - experiment_type
-        write_interval: epoch
+        write_interval: batch
