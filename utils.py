@@ -114,7 +114,7 @@ def load_reads(
         loaded_data = xr.load_dataset(f'data/predictions/{name}/{dataset}.nc')
         reads = loaded_data['reads'].values[:, ix]
         if renormalise:
-            reads = (reads[:, ix] / reads[:, ix].mean()) * 1000
+            reads = (reads / reads.mean()) * 1000
             true_reads = (true_reads / true_reads.mean()) * 1000
         predicted_reads[name] = reads
 
@@ -128,6 +128,12 @@ def compute_metrics(
         dataset : str,
         experiment : str,
         ) -> None:
+    df = pd.DataFrame({
+        'Model': [],
+        'RMSD': [],
+        'Correlation': [],
+        'Mean Absolute Error': [],
+    })
     for name, reads in predicted_reads.items():
         rmsd = np.sqrt(np.mean((np.log10(reads) - np.log10(true_reads))**2))
         correlation = np.corrcoef(np.log10(reads), np.log10(true_reads))[0, 1]
