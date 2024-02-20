@@ -120,7 +120,7 @@ class MultiHeadAttention(nn.Module):
             k : torch.Tensor, 
             v : torch.Tensor, 
             mask : Optional[torch.Tensor] = None, 
-            attn_mask : Optional[torch.Tensor] = None,
+            src_mask : Optional[torch.Tensor] = None,
             ) -> tuple[torch.Tensor, torch.Tensor]:
         """
         Compute the multi-head attention between the query, key and value tensors.
@@ -135,8 +135,8 @@ class MultiHeadAttention(nn.Module):
             The value tensor.
         mask: torch.Tensor, optional
             The mask to apply to the attention weights. Defaults to None.
-        attn_mask: torch.Tensor, optional
-            The attention mask to apply to the attention weights. Defaults to None.
+        src_mask: torch.Tensor, optional
+            The mask to apply to the source tensor. Defaults to None.
 
         Returns:
         --------
