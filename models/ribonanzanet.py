@@ -329,7 +329,7 @@ class ConvTransformerEncoderLayer(nn.Module):
         # initialize the multi-head attention module
         self.self_attn = MultiHeadAttention(
             d_model = d_model, 
-            nhead = nhead, 
+            n_head = nhead, 
             d_k = d_model//nhead, 
             d_v = d_model//nhead, 
             dropout=dropout,
