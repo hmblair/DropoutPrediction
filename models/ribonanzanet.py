@@ -20,7 +20,7 @@ class ScaledDotProductAttention(nn.Module):
     attn_dropout: float
         The dropout rate to apply to the attention weights.
     """
-    def __init__(self, temperature : float, attn_dropout : float = 0.1):
+    def __init__(self, temperature : float, attn_dropout : float = 0.1) -> None:
         super().__init__()
         self.temperature = temperature
         self.dropout = nn.Dropout(attn_dropout)
@@ -32,7 +32,7 @@ class ScaledDotProductAttention(nn.Module):
             v : torch.Tensor, 
             mask : Optional[torch.Tensor] = None, 
             attn_mask : Optional[torch.Tensor] = None,
-            ):
+            ) -> torch.Tensor:
         """
         Compute the scaled dot-product attention.
 
@@ -95,7 +95,7 @@ class MultiHeadAttention(nn.Module):
             d_k : int, 
             d_v : int, 
             dropout : float = 0.1,
-            ):
+            ) -> None:
         super().__init__()
         # store the number of heads, and the dimensionality of the keys and values
         self.n_head = n_head
@@ -121,7 +121,7 @@ class MultiHeadAttention(nn.Module):
             v : torch.Tensor, 
             mask : Optional[torch.Tensor] = None, 
             attn_mask : Optional[torch.Tensor] = None,
-            ):
+            ) -> tuple[torch.Tensor, torch.Tensor]:
         """
         Compute the multi-head attention between the query, key and value tensors.
 
@@ -200,7 +200,7 @@ class TriangleMultiplicativeModule(nn.Module):
         dim : int,
         hidden_dim : Optional[int] = None,
         mix : str = 'ingoing',
-        ):
+        ) -> None:
         super().__init__()
         # verify the mixing strategy
         if mix not in {'ingoing', 'outgoing'}:
@@ -241,7 +241,7 @@ class TriangleMultiplicativeModule(nn.Module):
             self, 
             x : torch.Tensor, 
             src_mask : Optional[torch.Tensor] = None,
-            ):
+            ) -> torch.Tensor:
         """
         Compute the forward pass through the triangle multiplicative module.
 
@@ -306,7 +306,7 @@ class ConvTransformerEncoderLayer(nn.Module):
             pairwise_dimension : int, 
             dropout : float = 0.1, 
             k : int = 3,
-            ):
+            ) -> None:
         """
         A convolutional layer followed by a multi-head attention layer and a feedforward neural network.
 
@@ -392,7 +392,7 @@ class ConvTransformerEncoderLayer(nn.Module):
             pairwise_features : torch.Tensor, 
             src_mask : Optional[torch.Tensor] = None,
             return_aw : bool = False,
-            ):
+            ) -> tuple[torch.Tensor, torch.Tensor, Optional[torch.Tensor]]:
         """
         Compute the forward pass through the transformer encoder layer.
 
@@ -474,7 +474,7 @@ class OuterProductMean(nn.Module):
             in_dim : int = 256, 
             dim_msa : int = 32, 
             pairwise_dim : int = 64,
-            ):
+            ) -> None:
         super().__init__()
         self.proj_down1 = nn.Linear(in_dim, dim_msa)
         self.proj_down2 = nn.Linear(dim_msa ** 2, pairwise_dim)
@@ -484,7 +484,7 @@ class OuterProductMean(nn.Module):
             self,
             seq_rep : torch.Tensor, 
             pair_rep : Optional[torch.Tensor] = None,
-            ):
+            ) -> torch.Tensor:
         """
         A forward pass through the outer product mean module.
 
@@ -527,12 +527,12 @@ class RelativePositionalEncoding(nn.Module):
     dim: int
         The dimensionality of the positional encoding.
     """
-    def __init__(self, dim : int = 64):
+    def __init__(self, dim : int = 64) -> None:
         super().__init__()
         self.linear = nn.Linear(17, dim)
 
 
-    def forward(self, src : torch.Tensor):
+    def forward(self, src : torch.Tensor) -> torch.Tensor:
         """
         Add the relative positional encoding to the input tensor.
 
@@ -590,7 +590,7 @@ class RibonanzaNet(nn.Module):
             nclass : int = 2,
             pairwise_dimension : int = 64,
             dropout : float = 0.05,
-            ):
+            ) -> None:
         super().__init__()
         self.transformer_encoder = []
         for i in range(nlayers):
@@ -699,7 +699,7 @@ class RibonanzaNet(nn.Module):
         """
         # get the shape of the input tensor
         B,L=src.shape
-        
+
         # convert the input tensor to long
         src = src.long()
 
