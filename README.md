@@ -43,7 +43,7 @@ If you are looking to perform small-scale inference on a few sequences, you can
 achieve this more easily with the [corresponding Kaggle notebook](https://www.kaggle.com/code/hmblair/ribonanzanet-drop-inference).
 
 This repo works with .nc files, which are like .csv files but can store multidimensional
-data. Interfacing with them can be done with xarray, which behaves similarly
+data. Interfacing with them can be done with [xarray](https://docs.xarray.dev), which behaves similarly
 to pandas. If you want to run inference on your own data, you should use the function 
 fasta_to_nc in utils.py to convert your data from .fasta to .nc, and then create 
 a new YAML file like those under examples/phase/predict.yaml, with predict_paths
