@@ -4,8 +4,8 @@ as outlined in the paper _Ribonanza: deep learning of RNA structure through dual
 
 To install, clone the repository and install the requirements via
 ```
-git clone https://github.com/hmblair/DropoutPrediction
-cd DropoutPrediction
+git clone https://github.com/hmblair/RibonanzaNet-Drop
+cd RibonanzaNet-Drop
 pip3 install -r requirements.txt
 ```
 
