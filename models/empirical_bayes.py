@@ -145,6 +145,18 @@ if __name__ == '__main__':
             'DMS Absolute error': [absolute_error_DMS],
             })
         
+        # round the results
+        df = df.round(
+            {
+                '2A3 Loss': 4,
+                '2A3 Correlation': 4,
+                '2A3 Absolute error': 0,
+                'DMS Loss': 4,
+                'DMS Correlation': 4,
+                'DMS Absolute error': 0,
+            }
+        )
+        
         # print the results
         print(f'Results for {dataset}:')
         print(df)

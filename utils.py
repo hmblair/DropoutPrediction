@@ -145,8 +145,8 @@ def compute_metrics(
             'Mean Absolute Error': [absolute_error],
         }).round(
             {
-                'RMSD': 3,
-                'Correlation': 3,
+                'RMSD': 4,
+                'Correlation': 4,
                 'Mean Absolute Error': 0,
             }
         )
