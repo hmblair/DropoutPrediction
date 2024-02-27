@@ -6,6 +6,7 @@ To install, clone the repository and install the requirements via
 ```
 git clone https://github.com/hmblair/RibonanzaNet-Drop
 cd RibonanzaNet-Drop
+git submodule update --init
 pip3 install -r requirements.txt
 ```
 
