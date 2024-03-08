@@ -4,7 +4,6 @@ import torch
 import torch.nn as nn
 import fm
 from collections.abc import Sequence
-from lib.data.processing.tokenizer import CharacterTokenizer
 
 class RNAFoundationModel(nn.Module, Sequence):
     """
@@ -23,9 +22,6 @@ class RNAFoundationModel(nn.Module, Sequence):
         self.model.eval()
         self.model.requires_grad_(False)
         self.embedding_dim = 640 
-        self.tokenizer = CharacterTokenizer(
-            {'A': 4, 'C': 5, 'G': 6, 'U': 7, 'T': 7}
-        )
 
 
     def forward(self, x : torch.Tensor) -> torch.Tensor:
@@ -107,20 +103,3 @@ class RNAFoundationModel(nn.Module, Sequence):
         Return the number of layers in the model.
         """
         return len(self.model.layers)
-    
-
-    def tokenize(self, x : str) -> torch.Tensor:
-        """
-        Tokenize the given string using the RNA-FM tokenizer.
-
-        Parameters:
-        ----------
-        x (str):
-            The string to tokenize.
-
-        Returns:
-        -------
-        torch.Tensor: 
-            The tokenized string.
-        """
-        return torch.Tensor(self.tokenizer(x)).T
