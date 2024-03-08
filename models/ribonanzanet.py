@@ -698,6 +698,8 @@ class RibonanzaNet(nn.Module):
             The embeddings of the input tensor. 
         """
         # get the shape of the input tensor
+        if src.ndim == 1:
+            src = src.unsqueeze(0)
         B,L=src.shape
 
         # convert the input tensor to long
