@@ -35,16 +35,16 @@ lr_scheduler:
     warmup_epochs: 10
 
 data:
-  class_path: lib.data.datamodules.netCDFDataModule
+  class_path: lib.data.datamodules.XarrayDataModule
   init_args:
-    train_paths: 
-      - data/onemil1_1.nc
-    validate_paths: 
-      - data/onemil1_2.nc
-    predict_paths:
-      - data/onemil2.nc
-      - data/p240.nc
-      - data/p390.nc
+    paths:
+      train:
+        - data/onemil1_1.nc
+      validate:
+        - data/onemil1_2.nc
+      predict:
+        - data/onemil2.nc
+        - data/p240.nc
+        - data/p390.nc
     target_variables:
-      - reads_2A3
-      - reads_DMS
+      - [[reads_2A3, reads_DMS], target]

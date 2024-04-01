@@ -15,8 +15,6 @@ model:
         class_path: lib.training.optimisation.losses.LogMSELoss
       absolute_error:
         class_path: torch.nn.L1Loss
-      relative_error:
-        class_path: torchmetrics.MeanAbsolutePercentageError
     name: rna-fm
 
 trainer:
@@ -28,6 +26,6 @@ trainer:
         unfreeze_rate: 5
 
 data:
-  batch_size: 64
+  batch_size: 32
   input_variables:
-    - sequence_embeddings
+    - [[sequence_embeddings], x]

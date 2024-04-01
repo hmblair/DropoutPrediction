@@ -15,8 +15,6 @@ model:
         class_path: lib.training.optimisation.losses.LogMSELoss
       absolute_error:
         class_path: torch.nn.L1Loss
-      relative_error:
-        class_path: torchmetrics.MeanAbsolutePercentageError
     name: ribonanzanet
 
 trainer:
@@ -28,22 +26,9 @@ trainer:
         unfreeze_rate: 5
 
 data:
-  class_path: lib.data.datamodules.netCDFDataModule
-  init_args:
-    batch_size: 32
-    train_paths: 
-      - data/onemil1_1.nc
-    validate_paths: 
-      - data/onemil1_2.nc
-    predict_paths:
-      - data/onemil2.nc
-      - data/p240.nc
-      - data/p390.nc
-    input_variables:
-      - sequence_embeddings
-    target_variables:
-      - reads_2A3
-      - reads_DMS
+  batch_size: 32
+  input_variables:
+    - [[sequence_embeddings], x]
 
 
 

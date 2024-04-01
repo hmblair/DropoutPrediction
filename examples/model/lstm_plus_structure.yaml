@@ -6,16 +6,14 @@ model:
     model:
       class_path: lib.models.recurrent.RecurrentEncoderDecoderWithAttention
       init_args:
-        embedding_dim: 64
-        hidden_size: 64
+        num_embeddings: [4, 5]
+        embedding_dims: [32, 32]
         out_size: 2
         num_encoder_layers: 8
         num_decoder_layers: 8
         dropout: 0.4
-        num_embeddings: 15
         num_heads: 8
         attention_dropout: 0.0
-        num_concat_dims: 2
         pooling:
           type: mean
           dim: -2
@@ -25,12 +23,9 @@ model:
         class_path: lib.training.optimisation.losses.LogMSELoss
       absolute_error:
         class_path: torch.nn.L1Loss
-      relative_error:
-        class_path: torchmetrics.MeanAbsolutePercentageError
     name: lstm_plus_structure
 
 data:
   batch_size: 64
   input_variables:
-    - sequence_embeddings
-    - structure_embeddings
+    - [[sequence_embeddings, structure_embeddings], x]
